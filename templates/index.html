@@ -1,0 +1,52 @@
+{% extends 'home.html' %}
+{% block title %} Index {% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <form action="" method="POST">
+        <div class="mb-3">
+            <label for="Title" class="form-label">Title</label>
+            <input type="text" name="title" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <input type="text" name="description" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+
+    {% if alltodo|length == 0 %}
+    <div class="alert alert-dark" role="alert">
+        No Todo Found. Add your first todo now..!!
+    </div>
+
+    {% else %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+
+        {% for object in alltodo %}
+        <tbody class="table-group-divider">
+            <tr>
+                <th scope="row">{{loop.index }}</th>
+                <td>{{ object.title }}</td>
+                <td>{{ object.description }}</td>
+                <td>
+                    <a href="/update/{{object.sno}}" class="btn btn-primary"> Edit</a>
+                    <a href="/delete/{{object.sno}}" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+{% endblock content %}

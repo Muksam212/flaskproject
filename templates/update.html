@@ -1,0 +1,19 @@
+{% extends 'home.html' %}
+{% block title %} Update {% endblock title %}
+
+{% block content %}
+<div class="container-fluid">
+    <form action="/update/{{alltodo.sno}}" method="POST">
+        <div class="mb-3">
+            <label for="Title" class="form-label">Title</label>
+            <input type="text" name="title" value="{{alltodo.title}}" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="Description" class="form-label">Description</label>
+            <input type="text" name="description" value = "{{ alltodo.description }}" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}
